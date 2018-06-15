@@ -325,7 +325,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 054346bc071fed84d9d051742af9ae21, type: 2}
     - target: {fileID: 4795569304796964, guid: 48f7b90eecd99da49b62589442fca986, type: 2}
       propertyPath: m_LocalScale.z
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1784844322655262, guid: 48f7b90eecd99da49b62589442fca986, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -414,26 +414,6 @@ Prefab:
     - target: {fileID: 4562792296291222, guid: 745d45af9d0cb1f43be8b887ec888f33, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 82732254420980710, guid: 745d45af9d0cb1f43be8b887ec888f33,
-        type: 2}
-      propertyPath: Loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54836840816989774, guid: 745d45af9d0cb1f43be8b887ec888f33,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 54836840816989774, guid: 745d45af9d0cb1f43be8b887ec888f33,
-        type: 2}
-      propertyPath: m_Mass
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 54836840816989774, guid: 745d45af9d0cb1f43be8b887ec888f33,
-        type: 2}
-      propertyPath: m_Drag
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 745d45af9d0cb1f43be8b887ec888f33, type: 2}
