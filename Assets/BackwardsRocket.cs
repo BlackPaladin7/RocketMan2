@@ -3,26 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : MonoBehaviour {
+public class BackwardsRocket : MonoBehaviour {
 
     Rigidbody rigidBody;
     AudioSource spaceshipsound;
     [SerializeField] float rotationThrust = 500f;
     [SerializeField] float upwardThrust = 200f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         rigidBody = GetComponent<Rigidbody>();
         spaceshipsound = GetComponent<AudioSource>();
-        
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         Thrust();
         Rotate();
-	}
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -34,7 +35,7 @@ public class Rocket : MonoBehaviour {
 
             default:
                 print("Dead");
-            break;
+                break;
         }
     }
 
@@ -61,14 +62,15 @@ public class Rocket : MonoBehaviour {
         rigidBody.freezeRotation = true;
 
         float rotationThisFrame = rotationThrust * Time.deltaTime;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(0, 0, 1 * rotationThisFrame);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
         rigidBody.freezeRotation = false;
     }
 }
+
