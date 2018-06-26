@@ -1,41 +1,71 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Rocket : MonoBehaviour {
+public class Rocket : MonoBehaviour
+{
 
-    Rigidbody rigidBody;
-    AudioSource spaceshipsound;
     [SerializeField] float rotationThrust = 500f;
     [SerializeField] float upwardThrust = 200f;
 
+    Rigidbody rigidBody;
+    AudioSource spaceshipsound;
+
+    enum State { Alive, Dying, Transcending }
+    State state = State.Alive;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         rigidBody = GetComponent<Rigidbody>();
         spaceshipsound = GetComponent<AudioSource>();
         
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        Thrust();
-        Rotate();
+
+    // Update is called once per frame
+    void Update ()
+    { // to do, stop sound on death
+
+        if (state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
 	}
 
     void OnCollisionEnter(Collision collision)
     {
+        if (state != State.Alive)
+        {
+            return;
+        }
         switch (collision.gameObject.tag)
         {
-            case "Friendly":
+            case "Friendly": //do nothing
                 print("OK");
                 break;
 
-            default:
-                print("Dead");
-            break;
+            case "Finish":
+                state = State.Transcending;
+                Invoke("LoadNextLevel", 1f); //Make Designer lever (parameterize)
+                break;
+
+            default: //death
+                print ("hit something deadly");
+                state = State.Dying;
+                Invoke ("LoadFirstLevel", 3f); 
+                break;
         }
+    }
+
+    private void LoadFirstLevel() //do this on player death
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 
     private void Thrust()

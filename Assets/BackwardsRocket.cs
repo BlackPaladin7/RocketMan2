@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BackwardsRocket : MonoBehaviour {
 
@@ -29,12 +28,16 @@ public class BackwardsRocket : MonoBehaviour {
     {
         switch (collision.gameObject.tag)
         {
-            case "Friendly":
+            case "Friendly": //do nothing
                 print("OK");
                 break;
 
+            case "Finish":
+                SceneManager.LoadScene(1);
+                break;
+
             default:
-                print("Dead");
+                SceneManager.LoadScene(0);
                 break;
         }
     }
