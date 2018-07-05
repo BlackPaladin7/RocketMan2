@@ -7,6 +7,15 @@ public class Rocket : MonoBehaviour
 
     [SerializeField] float rotationThrust = 500f;
     [SerializeField] float upwardThrust = 200f;
+    [SerializeField] float levelLoadDelay = 3f; 
+
+    [SerializeField] AudioClip MainEngine;
+    [SerializeField] AudioClip CollisionExplosion;
+    [SerializeField] AudioClip WinLevel;
+
+    [SerializeField] ParticleSystem rocketEngineParticles;
+    [SerializeField] ParticleSystem collisionParticles;
+    [SerializeField] ParticleSystem winParticles;
 
     Rigidbody rigidBody;
     AudioSource spaceshipsound;
@@ -19,8 +28,8 @@ public class Rocket : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         spaceshipsound = GetComponent<AudioSource>();
-        
-	}
+
+    }
 
     // Update is called once per frame
     void Update ()
@@ -46,16 +55,34 @@ public class Rocket : MonoBehaviour
                 break;
 
             case "Finish":
-                state = State.Transcending;
-                Invoke("LoadNextLevel", 1f); //Make Designer lever (parameterize)
+                RunWinSequence();
                 break;
 
             default: //death
-                print ("hit something deadly");
-                state = State.Dying;
-                Invoke ("LoadFirstLevel", 3f); 
+                RunDeathSequence();
                 break;
         }
+    }
+
+    private void RunWinSequence()
+    {
+        state = State.Transcending;
+        spaceshipsound.Stop();
+        rocketEngineParticles.Stop();
+        spaceshipsound.PlayOneShot(WinLevel);
+        winParticles.Play();
+        Invoke("LoadNextLevel", levelLoadDelay); 
+    }
+
+    private void RunDeathSequence()
+    {
+        print("hit something deadly");
+        state = State.Dying;
+        spaceshipsound.Stop();
+        rocketEngineParticles.Stop();
+        spaceshipsound.PlayOneShot(CollisionExplosion);
+        collisionParticles.Play();
+        Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
     private void LoadFirstLevel() //do this on player death
@@ -74,16 +101,23 @@ public class Rocket : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W)) //can thrust while rotating
         {
-            rigidBody.AddRelativeForce(Vector3.up * upwardThrustThisFrame);
-            if (!spaceshipsound.isPlaying)
-            {
-                spaceshipsound.Play();
-            }
+            ApplyThrust(upwardThrustThisFrame);
         }
         else
         {
             spaceshipsound.Stop();
+            rocketEngineParticles.Stop();
         }
+    }
+
+    private void ApplyThrust(float upwardThrustThisFrame)
+    {
+        rigidBody.AddRelativeForce(Vector3.up * upwardThrustThisFrame);
+        if (!spaceshipsound.isPlaying)
+        {
+            spaceshipsound.PlayOneShot(MainEngine);
+        }
+        rocketEngineParticles.Play();
     }
 
     private void Rotate()
