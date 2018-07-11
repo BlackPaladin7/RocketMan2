@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,7 @@ public class Rocket : MonoBehaviour
 
     Rigidbody rigidBody;
     AudioSource spaceshipsound;
+    bool collisionsAreDisabled = false;
 
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
@@ -28,7 +30,6 @@ public class Rocket : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         spaceshipsound = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
@@ -40,18 +41,21 @@ public class Rocket : MonoBehaviour
             Thrust();
             Rotate();
         }
-	}
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();
+        } 
+    }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive)
+        if (state != State.Alive || collisionsAreDisabled)
         {
             return;
         }
         switch (collision.gameObject.tag)
         {
             case "Friendly": //do nothing
-                print("OK");
                 break;
 
             case "Finish":
@@ -92,7 +96,17 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + (1);
+        int totalScenes = SceneManager.sceneCountInBuildSettings;
+        if (currentSceneIndex+1 < totalScenes)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else if (currentSceneIndex+1 == totalScenes)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private void Thrust()
@@ -134,5 +148,17 @@ public class Rocket : MonoBehaviour
             transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
         rigidBody.freezeRotation = false;
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionsAreDisabled = !collisionsAreDisabled;
+        }
     }
 }
