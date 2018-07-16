@@ -86,12 +86,13 @@ public class Rocket : MonoBehaviour
         rocketEngineParticles.Stop();
         spaceshipsound.PlayOneShot(CollisionExplosion);
         collisionParticles.Play();
-        Invoke("LoadFirstLevel", levelLoadDelay);
+        Invoke("ReloadLevel", levelLoadDelay);
     }
 
-    private void LoadFirstLevel() //do this on player death
+    private void ReloadLevel() //do this on player death
     {
-        SceneManager.LoadScene(0);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
     private void LoadNextLevel()
