@@ -563,43 +563,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4557094355771412, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035649197418168, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4609839892701538, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4246294201454934, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4939821800568498, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4059925625748330, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1673451612790414, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
-      propertyPath: m_Name
-      value: Success Particles Done
-      objectReference: {fileID: 0}
-    - target: {fileID: 4939821800568498, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -3.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114505081948120816, guid: 3bb68cee6bcbb4c4bb9483c193e26d05,
-        type: 2}
-      propertyPath: MainEngine
-      value: 
-      objectReference: {fileID: 8300000, guid: 92fa9319072105443a92a69d4391e658, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bb68cee6bcbb4c4bb9483c193e26d05, type: 2}
   m_IsPrefabParent: 0

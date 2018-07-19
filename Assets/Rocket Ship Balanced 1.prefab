@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 198637262726138388}
   - component: {fileID: 199100697242357730}
   m_Layer: 0
-  m_Name: Success Particles
+  m_Name: Success Particles Done
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682202930003068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: -25, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4035649197418168}
@@ -225,7 +225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1673451612790414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4731654215932618}
@@ -482,7 +482,7 @@ MonoBehaviour:
   upwardThrust: 1000
   levelLoadDelay: 2
   MainEngine: {fileID: 8300000, guid: 92fa9319072105443a92a69d4391e658, type: 3}
-  CollisionExplosion: {fileID: 8300000, guid: 9da8a69a2f4e637489890ddc7ab183d8, type: 3}
+  CollisionExplosion: {fileID: 8300000, guid: 0dba122485630d641b6b3e39dafea880, type: 3}
   WinLevel: {fileID: 8300000, guid: b2ec2502378bc754a96723919de778c0, type: 3}
   rocketEngineParticles: {fileID: 198042989858651610}
   collisionParticles: {fileID: 198758251341551974}
