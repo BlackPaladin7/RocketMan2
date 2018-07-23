@@ -153,7 +153,7 @@ public class Rocket : MonoBehaviour
 
     private void RespondToDebugKeys()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             LoadNextLevel();
         }
