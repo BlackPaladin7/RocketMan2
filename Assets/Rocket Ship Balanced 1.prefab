@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 54982425375916622}
   - component: {fileID: 114505081948120816}
   - component: {fileID: 82894842487076774}
+  - component: {fileID: 114208945626950980}
   m_Layer: 0
   m_Name: Rocket Ship Balanced 1
   m_TagString: Untagged
@@ -467,6 +468,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114208945626950980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1682202930003068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e54bcadcadf6fd448841a8be42edd93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerText: {fileID: 0}
 --- !u!114 &114505081948120816
 MonoBehaviour:
   m_ObjectHideFlags: 1
